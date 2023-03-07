@@ -6,10 +6,10 @@ Metadata support for [Zod](https://www.npmjs.com/package/zod) schemas.
 npm install zod-metadata
 ```
 
-## Usage
+## Register the Zod extension
 
 ### Automatic
-Import `zod-metadata/register` the top of your entry files:
+Import `zod-metadata/register` at the top of your entry files:
 
 **JavaScript**
 ```javascript
@@ -57,4 +57,23 @@ ts-node -r zod-metadata/register my-script.js
 ```typescript
 // my-script.ts
 import {} from 'zod-metadata'; // make type declarations available
+```
+
+## API
+The API provices two methods that will read and write to `schema._def.meta`.
+
+### `schema.meta(meta: Record<string, unknown>): this`
+Accumulates metadata mutating the schema:
+
+```javascript
+schema
+  .meta({ key1: value1 })
+  .meta({ key2: value2 });
+```
+
+### `schema.getMeta(): Record<string, unknown>`
+Returns the metadata:
+
+```javascript
+schema.getMeta(); // => { key1: value1, key2: value2 }
 ```
