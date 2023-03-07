@@ -1,6 +1,6 @@
 {
   "name": "zod-metadata",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extends Zod with metadata",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
