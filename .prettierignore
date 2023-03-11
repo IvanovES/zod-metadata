@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+.git
+.husky
+*rc.js
+*.config.js

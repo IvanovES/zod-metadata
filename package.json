@@ -27,7 +27,11 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig.build.json",
+    "format": "prettier \"**/*.[jt]s\" --write",
+    "lint": "eslint . --ext .ts --fix",
     "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
@@ -56,13 +60,20 @@
     "@types/jest": "^29.4.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
+    "commitlint": "^17.4.4",
+    "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "husky": "^8.0.0",
     "jest": "^29.5.0",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4",
     "rimraf": "^4.3.1",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5",
     "zod": "^3.21.2"
+  },
+  "dependencies": {
+    "@commitlint/config-conventional": "^17.4.4"
   }
 }

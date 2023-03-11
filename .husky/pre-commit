@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run typecheck
-npm test
+npx --no -- tsc --noEmit
+npx --no -- lint-staged
+npx --no -- jest --coverage --silent
