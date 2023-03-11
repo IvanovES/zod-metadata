@@ -60,7 +60,7 @@ import {} from 'zod-metadata'; // make type declarations available
 ```
 
 ## API
-The API provices two methods that will read and write to `schema._def.meta`.
+The API provides two methods that will read and write to `schema._def.meta`.
 
 ### `schema.meta(meta: Record<string, unknown>): this`
 Accumulates metadata mutating the schema:
