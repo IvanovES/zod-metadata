@@ -3,4 +3,7 @@ module.exports = {
     'prettier --write',
     'eslint --fix'
   ],
+  '*.md': [
+    'prettier --write',
+  ],
 };

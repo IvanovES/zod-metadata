@@ -1,13 +1,28 @@
 import z from 'zod';
 
 declare module 'zod' {
-  interface ZodTypeDef {
-    meta?: Record<string, unknown>;
+  interface ZodMeta {
+    [k: string | number | symbol]: unknown;
   }
 
-  interface ZodType {
-    getMeta(): Record<string, unknown>;
-    meta(meta: Record<string, unknown>): this;
+  interface ZodTypeDef {
+    meta?: ZodMeta;
+  }
+
+  interface ZodType<
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Output = any,
+    Def extends z.ZodTypeDef = z.ZodTypeDef,
+    Input = Output
+  > {
+    getMeta(): this['_def'] extends { meta: infer M } ? M : ZodMeta | undefined;
+    meta<T extends ZodMeta = ZodMeta>(
+      meta: T
+    ): ZodType<
+      Output,
+      Def extends { meta: infer M } ? Def & { meta: M & T } : Def & { meta: T },
+      Input
+    >;
   }
 }
 
@@ -16,7 +31,7 @@ export function register(zod: typeof z) {
     return;
   }
 
-  zod.ZodType.prototype.meta = function (meta: Record<string, unknown>) {
+  zod.ZodType.prototype.meta = function (meta: z.ZodMeta) {
     this._def.meta = { ...this._def.meta, ...meta };
     return this;
   };
