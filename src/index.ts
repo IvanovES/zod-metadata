@@ -1,13 +1,17 @@
 import z from 'zod';
 
 declare module 'zod' {
+  interface IMeta {
+    [k: string]: unknown;
+  }
+
   interface ZodTypeDef {
-    meta?: Record<string, unknown>;
+    meta?: IMeta;
   }
 
   interface ZodType {
-    getMeta(): Record<string, unknown>;
-    meta(meta: Record<string, unknown>): this;
+    getMeta<T = IMeta>(): T;
+    meta<T = IMeta>(meta: T): this;
   }
 }
 

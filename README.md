@@ -67,8 +67,8 @@ Accumulates metadata mutating the schema:
 
 ```javascript
 schema
-  .meta({ key1: value1 })
-  .meta({ key2: value2 });
+    .meta({ key1: value1 })
+    .meta({ key2: value2 });
 ```
 
 ### `schema.getMeta(): Record<string, unknown>`
@@ -76,4 +76,26 @@ Returns the metadata:
 
 ```javascript
 schema.getMeta(); // => { key1: value1, key2: value2 }
+```
+
+## Typings
+
+To define global (default) typings for `.meta()` and `.getMeta()` calls (and so get autocompletion in your IDE), create a `<some-name>.d.ts` file in your project and override default IMeta interface, like this:
+
+```typescript
+import z from 'zod';
+
+declare module 'zod' {
+    interface IMeta {
+        name: string;
+        age?: number;
+    }
+}
+```
+
+To override default return type of a single `.getMeta()` call or define argument type of a single `.meta()` call, use optional generic arguments, like:
+
+```typescript
+z.string().getMeta<{city: string}>({city: 'New York'});
+const city = z.string().meta<{city: string}>().city;
 ```
