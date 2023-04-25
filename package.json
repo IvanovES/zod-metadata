@@ -27,7 +27,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig.build.json",
-    "format": "prettier \"**/*.[jt]s\" --write",
+    "format": "prettier \"**/*.{js,ts,md}\" --write",
     "lint": "eslint . --ext .ts --fix",
     "test": "jest",
     "test:cov": "jest --coverage",
