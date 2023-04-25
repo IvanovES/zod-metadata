@@ -10,8 +10,8 @@ declare module 'zod' {
   }
 
   interface ZodType {
-    getMeta<T = IMeta>(): T;
-    meta<T = IMeta>(meta: T): this;
+    getMeta<T extends object = IMeta>(): T;
+    meta<T extends object = IMeta>(meta: T): this;
   }
 }
 
@@ -20,7 +20,7 @@ export function register(zod: typeof z) {
     return;
   }
 
-  zod.ZodType.prototype.meta = function (meta: Record<string, unknown>) {
+  zod.ZodType.prototype.meta = function (meta: object) {
     this._def.meta = { ...this._def.meta, ...meta };
     return this;
   };
