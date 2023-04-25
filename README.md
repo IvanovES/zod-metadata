@@ -67,8 +67,8 @@ Accumulates metadata mutating the schema:
 
 ```javascript
 schema
-    .meta({ key1: value1 })
-    .meta({ key2: value2 });
+  .meta({ key1: value1 })
+  .meta({ key2: value2 });
 ```
 
 ### `schema.getMeta(): Record<string, unknown>`
@@ -96,6 +96,6 @@ declare module 'zod' {
 To override default return type of a single `.getMeta()` call or define argument type of a single `.meta()` call, use optional generic arguments, like:
 
 ```typescript
-z.string().getMeta<{city: string}>({city: 'New York'});
-const city = z.string().meta<{city: string}>().city;
+z.string().meta<{city: string}>({city: 'New York'});
+const city = z.string().getMeta<{city: string}>().city;
 ```
