@@ -85,3 +85,17 @@ ts-node -r zod-metadata/register my-script.js
 // my-script.ts
 import {} from 'zod-metadata'; // make type declarations available
 ```
+
+**Via NODE_OPTIONS**
+
+```bash
+NODE_OPTIONS='-r zod-metadata/register' node my-script.js
+```
+
+## Specifying the metadata shape
+
+Since you can re-declare an interface to add stuff to it,
+you can redeclare the `ZodMeta` interface to add fields to it.
+This may be helpful if you have handful, pre-defined keys you're going to use project-wide.
+
+![Overwritting the zod metadata interface](https://github.com/IvanovES/zod-metadata/blob/main/docs/images/project-wide-meta-type.png)
