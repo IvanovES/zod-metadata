@@ -7,7 +7,7 @@ Metadata support for [Zod](https://www.npmjs.com/package/zod) schemas.
 ```bash
 npm install zod-metadata
 yarn add zod-metadata
-pnpn add zod-metadata
+pnpm add zod-metadata
 ```
 
 ## Basic Usage
