@@ -2,6 +2,9 @@
 
 Metadata support for [Zod](https://www.npmjs.com/package/zod) schemas.
 
+> [!WARNING]  
+> Zod 4 introduced metadata support (see [docs](https://v4.zod.dev/v4#metadata)) and so there is no need for this package.
+
 ## Installation
 
 ```bash
